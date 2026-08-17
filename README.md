@@ -69,6 +69,8 @@ west build --no-sysbuild -p always \
   -- -DICM20948_EXAMPLE=quat6
 ```
 
+> **nRF Connect for VS Code:** Disable **Sysbuild** in the build configuration. This project is a single-image Zephyr application. Use a separate build directory such as `build/<example>` and add the matching CMake argument, for example `-DICM20948_EXAMPLE=quat9` for the `quat9` example.
+
 Available values for `ICM20948_EXAMPLE` are:
 
 | Example | Output | Current verification |

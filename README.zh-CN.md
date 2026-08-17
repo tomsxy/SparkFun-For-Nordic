@@ -69,6 +69,8 @@ west build --no-sysbuild -p always \
   -- -DICM20948_EXAMPLE=quat6
 ```
 
+> **Nordic VS Code 插件（nRF Connect for VS Code）：** 在 Build Configuration 中关闭 **Sysbuild**。本项目是单镜像 Zephyr 应用。每个示例使用独立的构建目录，例如 `build/<example>`，并在 CMake arguments 中输入对应参数；例如构建 `quat9` 时使用 `-DICM20948_EXAMPLE=quat9`。
+
 `ICM20948_EXAMPLE` 可选值如下：
 
 | 示例 | 输出 | 当前验证状态 |
