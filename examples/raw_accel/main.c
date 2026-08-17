@@ -1,4 +1,13 @@
 /*
+ * 版权所有 (c) 2026 XyShen
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * 本文件属于 Nordic 示例和适配贡献范围。许可证范围见
+ * LICENSE-NORDIC.md；SparkFun 派生代码与固件继续适用其原有许可证。
+ */
+
+/*
  * 基于 SparkFun ICM-20948 Arduino Library 1.3.2 的
  * Example8_DMP_RawAccel，改写为 Zephyr 纯 C 示例。
  */

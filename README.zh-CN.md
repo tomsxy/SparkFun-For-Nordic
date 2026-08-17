@@ -95,9 +95,10 @@ west flash -d build/quat6 -r jlink
 | 路径 | 是否公开 | 原因与条件 |
 | --- | --- | --- |
 | `CMakeLists.txt`、`prj.conf`、`app.overlay`、`.gitignore` | 是 | 复现 Zephyr 应用和板级接线所需。 |
-| `icm20948_app.h`、`icm20948_port.c`、`icm20948_dmp_init.c` | 是，但先确定许可证 | 这是 Nordic 适配代码；公开前要为自己的适配代码增加许可证。 |
-| `examples/**` | 是 | 这是公开使用方式和验证入口；必须如实保留验证状态。 |
+| `icm20948_app.h`、`icm20948_port.c`、`icm20948_dmp_init.c` | 是，适用 `LICENSE-NORDIC.md` | 这是 Nordic 适配代码；MIT 作用域只覆盖带 SPDX 声明的 XyShen 原创贡献。 |
+| `examples/**` | 是，需保留作用域署名 | 这是公开使用方式和验证入口；必须如实保留验证状态，SparkFun 派生内容继续适用原许可证。 |
 | `third_party/icm20948/**` | 是，但必须保留署名和许可 | 其中包含派生自 SparkFun 的 C 代码和 DMP 固件；保留 `License.md`、版权声明，并说明来源版本为 1.3.2。 |
+| `LICENSE-NORDIC.md` | 是，有明确作用域 | MIT 许可证只覆盖 XyShen 的 Nordic 适配和示例原创贡献，不是整个仓库的通用许可证。 |
 | `README.md`、`README.zh-CN.md` | 是 | 公开配置、限制、来源和发布边界。 |
 | `AGENTS.md`、`HANDOFF.md`、`.codex/**` | 否 | 内部指令、工作历史和 Codex 记忆。 |
 | `build/**`、`.cache/**`、`.DS_Store` | 否 | 本地生成物或元数据。 |
@@ -105,9 +106,9 @@ west flash -d build/quat6 -r jlink
 | 工作区中的旧 `SparkFun-Nordic/` 目录 | 否 | 它是本迁移之外的独立历史/最小工程。 |
 | `docs/**` | 不应原样公开 | 当前整理文档含工作区私有路径和内部交接上下文；如有需要，只发布审阅后的、与本地路径无关的内容。 |
 
-## 第一次公开推送前的检查清单
+## 后续公开更新前的检查清单
 
-- 为 Nordic 适配代码和示例代码选择并添加仓库根许可证。`third_party/icm20948/License.md` 中的 SparkFun MIT 文本不会自动覆盖新增的 Nordic 文件。
+- 保持 `LICENSE-NORDIC.md` 只覆盖 XyShen 的 Nordic 适配和示例原创贡献；它不会替代 SparkFun 许可证，也不覆盖 `third_party/icm20948/**`。
 - 对派生 C 核心和 DMP 固件保留 SparkFun 署名及许可证，并注明上游为 [SparkFun ICM-20948 Arduino Library](https://github.com/sparkfun/SparkFun_ICM-20948_ArduinoLibrary) 1.3.2。
 - 将本目录作为仓库根目录公开，不要把整个工作区一起推送。
 - 对四个示例分别执行干净构建；在 README 把最新 `quat6` Euler、`raw_accel` 和 `multiple_sensors` 写成“已验证”之前，先完成板测。
@@ -124,4 +125,4 @@ west flash -d build/quat6 -r jlink
 
 ## 许可证与署名
 
-`third_party/icm20948/License.md` 包含 SparkFun 代码和固件的许可证文本。Nordic 适配代码和示例目前没有单独的仓库根许可证声明；在将仓库视为完整开源项目之前，请先补充。本文不表示 SparkFun 认可或背书本移植。
+`LICENSE-NORDIC.md` 将 MIT 许可证适用于带 SPDX 声明的 XyShen Nordic 适配和示例原创贡献。`third_party/icm20948/License.md` 仍是 SparkFun 代码和固件的许可证；本仓库不重新授权这些内容。本文不表示 SparkFun 认可或背书本移植。

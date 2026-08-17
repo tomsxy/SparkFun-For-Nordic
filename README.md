@@ -95,9 +95,10 @@ The following split is the recommended first public release boundary.
 | Path | Publish? | Reason and condition |
 | --- | --- | --- |
 | `CMakeLists.txt`, `prj.conf`, `app.overlay`, `.gitignore` | Yes | Required to reproduce the Zephyr application and its board wiring. |
-| `icm20948_app.h`, `icm20948_port.c`, `icm20948_dmp_init.c` | Yes, after licensing decision | These are the Nordic adaptation files. Add a license for your own adaptation before publishing. |
-| `examples/**` | Yes | They are the public usage and validation surface. Keep the verification status honest. |
+| `icm20948_app.h`, `icm20948_port.c`, `icm20948_dmp_init.c` | Yes, under `LICENSE-NORDIC.md` | These are the Nordic adaptation files. The scoped MIT license applies to XyShen's original contributions in files carrying the SPDX notice. |
+| `examples/**` | Yes, with scoped attribution | They are the public usage and validation surface. Keep the verification status honest; SparkFun-derived material keeps its original license. |
 | `third_party/icm20948/**` | Yes, with attribution | These files contain SparkFun-derived C code and DMP firmware. Keep `License.md`, preserve copyright notices, and state the 1.3.2 source version. |
+| `LICENSE-NORDIC.md` | Yes, scoped | MIT license for XyShen's original Nordic adaptation and example contributions only; it is not a repository-wide license. |
 | `README.md`, `README.zh-CN.md` | Yes | Public setup, limitations, provenance, and release boundary. |
 | `AGENTS.md`, `HANDOFF.md`, `.codex/**` | No | Internal instructions, work history, and Codex memory. |
 | `build/**`, `.cache/**`, `.DS_Store` | No | Local generated output or metadata. |
@@ -105,9 +106,9 @@ The following split is the recommended first public release boundary.
 | Legacy `SparkFun-Nordic/` workspace directory | No | It is a separate historical/minimal project outside this migration's public unit. |
 | `docs/**` | No, not as-is | The current notes contain private workspace paths and internal handoff context. Publish only a reviewed, path-independent subset if needed. |
 
-## Before the first public push
+## Before future public revisions
 
-- Choose and add a root license for the Nordic adapter and example code. The SparkFun MIT notice in `third_party/icm20948/License.md` does not automatically license the new Nordic files.
+- Keep `LICENSE-NORDIC.md` scoped to XyShen's original Nordic adaptation and example contributions. It does not replace the SparkFun license or cover `third_party/icm20948/**`.
 - Keep the SparkFun attribution and license with the derived C core and DMP image. The upstream reference is [SparkFun ICM-20948 Arduino Library](https://github.com/sparkfun/SparkFun_ICM-20948_ArduinoLibrary), version 1.3.2.
 - Publish this directory as the repository root, rather than pushing the whole workspace.
 - Perform a clean build for all four examples; board-test the latest `quat6` Euler code, `raw_accel`, and `multiple_sensors` before describing them as verified.
@@ -124,4 +125,4 @@ The following split is the recommended first public release boundary.
 
 ## License and attribution
 
-`third_party/icm20948/License.md` contains the SparkFun code and firmware license text. The Nordic adapter and examples currently have no separate root license declaration; add one before treating the repository as fully open-source. This README makes no claim that SparkFun endorses this port.
+`LICENSE-NORDIC.md` applies the MIT license to XyShen's original Nordic adaptation and example contributions that carry the SPDX notice. `third_party/icm20948/License.md` remains the license for the SparkFun code and firmware; this repository does not relicense that material. This README makes no claim that SparkFun endorses this port.

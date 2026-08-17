@@ -1,3 +1,12 @@
+/*
+ * 版权所有 (c) 2026 XyShen
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * 本文件属于 Nordic 适配范围。许可证范围见 LICENSE-NORDIC.md。
+ * SparkFun 派生代码与固件继续适用其原有许可证。
+ */
+
 #ifndef ICM20948_APP_H_
 #define ICM20948_APP_H_
 
