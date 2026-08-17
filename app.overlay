@@ -1,0 +1,33 @@
+#include <zephyr/dt-bindings/i2c/i2c.h>
+#include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
+
+&pinctrl {
+	icm20948_i2c22_default: icm20948_i2c22_default {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SCL, 1, 11)>,
+				<NRF_PSEL(TWIM_SDA, 1, 12)>;
+			// No need to pull-up as the sensor itself has pull-up circuit
+		};
+	};
+
+	icm20948_i2c22_sleep: icm20948_i2c22_sleep {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SCL, 1, 11)>,
+				<NRF_PSEL(TWIM_SDA, 1, 12)>;
+			low-power-enable;
+			// No need to pull-up as the sensor itself has pull-up circuit
+		};
+	};
+};
+
+&i2c22 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	pinctrl-0 = <&icm20948_i2c22_default>;
+	pinctrl-1 = <&icm20948_i2c22_sleep>;
+	pinctrl-names = "default", "sleep";
+
+	icm20948: icm20948@69 {
+		reg = <0x69>;
+	};
+};
